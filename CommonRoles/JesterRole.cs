@@ -84,4 +84,14 @@ namespace CommonRoles
             return !isJester; // don't make jester dead (why not)
         }
     }
+
+    [HarmonyPatch(typeof(EndGameManager), nameof(EndGameManager.SetEverythingUp))]
+    [HarmonyPatch(typeof(InnerNetClient), nameof(InnerNetClient.Method_46))]
+    internal static class ResetWinnerPatches
+    {
+        private static void Postfix()
+        {
+            JesterWon.Winner = null;
+        }
+    }
 }
