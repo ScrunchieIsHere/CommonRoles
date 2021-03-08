@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using BepInEx.IL2CPP;
 using CrowdedRoles.Attributes;
 using CrowdedRoles.Extensions;
@@ -85,10 +86,14 @@ namespace CommonRoles
         }
     }
 
-    [HarmonyPatch(typeof(EndGameManager), nameof(EndGameManager.SetEverythingUp))]
-    [HarmonyPatch(typeof(InnerNetClient), nameof(InnerNetClient.Method_46))]
+    [HarmonyPatch]
     internal static class ResetWinnerPatches
     {
+        private static IEnumerable<MethodBase> TargetMethods()
+        {
+            yield return typeof(EndGameManager).GetMethod("MFIBPNBCMKM")!; // SetEverythingUp
+            yield return typeof(InnerNetClient).GetMethod("AMKMODDAFOO")!; // OnDisconnected
+        }
         private static void Postfix()
         {
             JesterWon.Winner = null;
