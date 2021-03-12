@@ -7,6 +7,7 @@ using CrowdedRoles.Extensions;
 using CrowdedRoles.GameOverReasons;
 using CrowdedRoles.Roles;
 using HarmonyLib;
+using InnerNet;
 using Reactor.Extensions;
 using UnityEngine;
 
@@ -71,7 +72,7 @@ namespace CommonRoles
         }
     }
     
-    [HarmonyPatch(typeof(ExileController), nameof(ExileController.Method_37))]
+    [HarmonyPatch(typeof(ExileController), nameof(ExileController.Method_24))]
     internal static class ExileController_WrapUp
     {
         private static bool Prefix(ExileController __instance)
@@ -91,8 +92,8 @@ namespace CommonRoles
     {
         private static IEnumerable<MethodBase> TargetMethods()
         {
-            yield return typeof(EndGameManager).GetMethod("MFIBPNBCMKM")!; // SetEverythingUp
-            yield return typeof(InnerNetClient).GetMethod("AMKMODDAFOO")!; // OnDisconnected
+            yield return typeof(EndGameManager).GetMethod("BPHOLDGAGHI")!; // SetEverythingUp
+            yield return typeof(InnerNetClient).GetMethod("FOOLFJHCEOE")!; // OnDisconnected
         }
         private static void Postfix()
         {
