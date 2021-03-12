@@ -24,7 +24,6 @@ namespace CommonRoles
             RegisterCustomRoleAttribute.Register(this);
             RegisterCustomGameOverReasonAttribute.Register(this);
             SheriffOptions.RegisterOptions(this);
-            SabotageEnhancments.ColorblindComms.Register(this);
             
             Harmony.PatchAll();
             Logger = Log;
